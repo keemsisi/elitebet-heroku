@@ -1,0 +1,33 @@
+{
+  "name": "promotbotapp",
+  "version": "1.0.0",
+  "description": "the front end server with nodejs powered on mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"The server is working\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keemsisi/promotbotapp.git"
+  },
+  "keywords": [
+    "promotional",
+    "grading",
+    "system",
+    "powered",
+    "with",
+    "nodejs"
+  ],
+  "author": "keemsisi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keemsisi/promotbotapp/issues"
+  },
+  "homepage": "https://github.com/keemsisi/promotbotapp#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "helmet": "^3.20.0",
+    "morgan": "^1.9.1"
+  }
+}
