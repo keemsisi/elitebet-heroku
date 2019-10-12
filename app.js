@@ -22,9 +22,21 @@ APPLICATION.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Conte
 APPLICATION.set("Access-Control-Allow-Credentials", true);
 APPLICATION.set(helmet());
 
+
+
+
+
 APPLICATION.get("/" , (request , response , error )=> {
   response.status(200).sendFile(__dirname + '/public/coming-soon.html');
 });
+
+
+
+APPLICATION.get("/timer" , (request , response , error )=> {
+  var f = process.env["RUNNING_TIMER"];
+  response.status(200).send(f + "");
+});
+
 
 // catch 404 and forward to error handler
 APPLICATION.use(function(req, res, next) {
@@ -37,5 +49,5 @@ APPLICATION.use(function(req, res, next) {
     res.locals.error = APPLICATION.get('env') === 'production' ? err : {};
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    // res.render('error');
 });module.exports = APPLICATION;
