@@ -27,7 +27,7 @@ APPLICATION.set(helmet());
 
 
 APPLICATION.get("/" , (request , response , error )=> {
-  response.status(200).sendFile(__dirname + '/public/coming-soon.html');
+  response.status(200).sendFile(__dirname + '/public/index.html');
 });
 
 
