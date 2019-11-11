@@ -27,7 +27,11 @@ APPLICATION.set(helmet());
 
 
 APPLICATION.get("/" , (request , response , error )=> {
-  response.status(200).sendFile(__dirname + '/public/index.html');
+  response.status(200).sendFile(__dirname + '/public/landing/index.html');
+});
+
+APPLICATION.get("/dashboard" , (request , response , error )=> {
+  response.status(200).sendFile(__dirname + '/public/dashboard/dashboard.html');
 });
 
 
