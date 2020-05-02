@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var helmet = require('helmet');
+var compression = require('compression');
 
 var APPLICATION = express();
 var bodyParser = require('body-parser');
@@ -11,11 +12,17 @@ var bodyParser = require('body-parser');
 // view engine setup
 // APPLICATION.set('views', path.join(__dirname, 'views'));
 // APPLICATION.set('view engine', 'ejs');
+APPLICATION.use(compression())
 APPLICATION.use(logger('dev'));
 APPLICATION.use(express.json());
 APPLICATION.use(bodyParser.urlencoded({ extended: true , limit : 100000}));
 APPLICATION.use(cookieParser());
-APPLICATION.use(express.static(path.join(__dirname, 'public'))); // the pgs-app home 
+// APPLICATION.use(express.static(path.join(__dirname, 'public/landing'))); // the pgs-app home 
+// APPLICATION.use(express.static(path.join(__dirname, 'public/account-dashboard'))); // the pgs-app home 
+
+APPLICATION.use(express.static(path.join(__dirname , 'public/landing')))
+APPLICATION.use(express.static(path.join(__dirname , 'public/dashboard')))
+
 APPLICATION.set("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET , PURGE , UPDATE");
 APPLICATION.set("Access-Control-Allow-Origin", "**");
 APPLICATION.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -28,10 +35,11 @@ APPLICATION.set(helmet());
 
 APPLICATION.get("/" , (request , response , error )=> {
   response.status(200).sendFile(__dirname + '/public/landing/index.html');
+  // response.send("Ok");
 });
 
-APPLICATION.get("/dashboard" , (request , response , error )=> {
-  response.status(200).sendFile(__dirname + '/public/dashboard/dashboard.html');
+APPLICATION.get("/account-dashboard" , (request , response , error )=> {
+  response.status(200).sendFile(__dirname + '/public/dashboard/index.html');
 });
 
 
